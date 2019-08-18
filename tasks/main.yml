@@ -14,6 +14,12 @@
     msg: jenkins_tls_key is required
   when: jenkins_tls_key is not defined
 
+- name: install additional OS packages
+  apt: name={{ packages }} state=present
+  vars:
+    packages:
+      - docker.io
+
 # Since our variables have the same name as the thirdparty role, we need to set
 # them explicitly to avoid an infinite lookup.
 - name: set jenkins defaults as facts
@@ -26,6 +32,13 @@
   vars:
     jenkins_plugins: "{{ __jenkins_plugins + jenkins_additional_plugins }}"
     jenkins_plugin_timeout: 120
+
+- name: add jenkins to the docker group
+  user:
+    name: jenkins
+    groups: docker
+    state: present
+    append: yes
 
 - name: install nginx for ssl termination
   import_tasks: nginx.yml
