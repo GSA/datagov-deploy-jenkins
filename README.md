@@ -72,6 +72,11 @@ File content for the TLS/SSL certificate to serve for your Jenkins instance.
 File content for the TLS/SSL key to serve for your Jenkins instance.
 
 
+#### `jenkins_url` string
+
+The public URL where Jenkins will be available.
+
+
 ## Development
 
 Requirements:

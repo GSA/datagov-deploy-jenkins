@@ -1,3 +1,5 @@
+limit_req_zone $binary_remote_addr zone=jenkins:10m rate=5r/s;
+
 upstream jenkins {
   server localhost:8080 fail_timeout=0;
 }
@@ -12,13 +14,26 @@ server {
 
 server {
   listen 443 ssl;
-  server_name jenkins.domain.tld;
+  server_name {{ jenkins_url | default(ansible_fqdn) }};
 
   ssl_certificate /etc/ssl/certs/jenkins.crt;
   ssl_certificate_key /etc/ssl/private/jenkins.key;
 
+  location /login {
+    limit_req zone=jenkins;
+  }
+
   location / {
+    proxy_set_header        Host $host:$server_port;
+    proxy_set_header        X-Real-IP $remote_addr;
+    proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header        X-Forwarded-Proto $scheme;
+    proxy_redirect http:// https://;
     proxy_pass              http://jenkins;
+    # Required for new HTTP-based CLI
+    proxy_http_version 1.1;
+    proxy_request_buffering off;
+    proxy_buffering off; # Required for HTTP-based CLI to work over SSL
     # workaround for https://issues.jenkins-ci.org/browse/JENKINS-45651
     add_header 'X-SSH-Endpoint' 'jenkins.domain.tld:50022' always;
   }
