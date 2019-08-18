@@ -1,0 +1,25 @@
+upstream jenkins {
+  server localhost:8080 fail_timeout=0;
+}
+
+# Redirect HTTP -> HTTPS
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	return 301 https://$host$request_uri;
+}
+
+server {
+  listen 443 ssl;
+  server_name jenkins.domain.tld;
+
+  ssl_certificate /etc/ssl/certs/jenkins.crt;
+  ssl_certificate_key /etc/ssl/private/jenkins.key;
+
+  location / {
+    proxy_pass              http://jenkins;
+    # workaround for https://issues.jenkins-ci.org/browse/JENKINS-45651
+    add_header 'X-SSH-Endpoint' 'jenkins.domain.tld:50022' always;
+  }
+}

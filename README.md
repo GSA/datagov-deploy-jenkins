@@ -27,6 +27,8 @@ specifying them in the `jenkins_additional_plugins` variable.
 
 ## Usage
 
+Install [geerlingugy.jenkins](https://github.com/geerlingguy/ansible-role-jenkins).
+
 Example playbook.
 
 ```
@@ -39,6 +41,11 @@ Example playbook.
 
 
 ### Variables
+
+In addition to the variables available for
+[geerlingugy.jenkins](https://github.com/geerlingguy/ansible-role-jenkins),
+these variables are also available.
+
 
 #### `jenkins_admin_user` string (default: admin)
 
@@ -53,6 +60,16 @@ The admin password to assign.
 #### `jenkins_additional_plugins` list of string (default: [])
 
 Additional Jenkins plugins to install.
+
+
+#### `jenkins_tls_cert` string required
+
+File content for the TLS/SSL certificate to serve for your Jenkins instance.
+
+
+#### `jenkins_tls_key` string required
+
+File content for the TLS/SSL key to serve for your Jenkins instance.
 
 
 ## Development

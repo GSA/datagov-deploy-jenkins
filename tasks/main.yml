@@ -4,6 +4,16 @@
     msg: jenkins_admin_password is required
   when: jenkins_admin_password is not defined
 
+- name: assert jenkins_tls_cert is set
+  fail:
+    msg: jenkins_tls_cert is required
+  when: jenkins_tls_cert is not defined
+
+- name: assert jenkins_tls_key is set
+  fail:
+    msg: jenkins_tls_key is required
+  when: jenkins_tls_key is not defined
+
 # Since our variables have the same name as the thirdparty role, we need to set
 # them explicitly to avoid an infinite lookup.
 - name: set jenkins defaults as facts
@@ -16,3 +26,6 @@
   vars:
     jenkins_plugins: "{{ __jenkins_plugins + jenkins_additional_plugins }}"
     jenkins_plugin_timeout: 120
+
+- name: install nginx for ssl termination
+  import_tasks: nginx.yml

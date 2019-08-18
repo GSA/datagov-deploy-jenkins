@@ -3,3 +3,94 @@
   hosts: all
   roles:
     - role: datagov-deploy-jenkins
+      vars:
+        jenkins_admin_password: admin
+        jenkins_tls_cert: |
+          -----BEGIN CERTIFICATE-----
+          MIIF4TCCA8mgAwIBAgIJAOr/xRjCyjDsMA0GCSqGSIb3DQEBCwUAMIGGMQswCQYD
+          VQQGEwJVUzELMAkGA1UECAwCREMxEzARBgNVBAcMCldhc2hpbmd0b24xKjAoBgNV
+          BAoMIVRlY2hub2xvZ3kgVHJhbnNmb3JtYXRpb24gU2VydmljZTERMA8GA1UECwwI
+          RGF0YS5nb3YxFjAUBgNVBAMMDWplbmtpbnMubG9jYWwwHhcNMTkwODE4MDY1NDA1
+          WhcNMjAwODE3MDY1NDA1WjCBhjELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAkRDMRMw
+          EQYDVQQHDApXYXNoaW5ndG9uMSowKAYDVQQKDCFUZWNobm9sb2d5IFRyYW5zZm9y
+          bWF0aW9uIFNlcnZpY2UxETAPBgNVBAsMCERhdGEuZ292MRYwFAYDVQQDDA1qZW5r
+          aW5zLmxvY2FsMIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEAmVucsyey
+          93yQPFyPyvnjov5A3Vm8eP2hZ2C1Tmig0LAJZ7vFlm8xKra3UMur7G1oQzAt7uhA
+          yISnuafzKtA77Z8EbIsUcEmCzMMAY9cR0y8Sfs+h/WaUt0K5TiPI4PTVwfLKZlxF
+          srbCRN7PSoT/50NIyy5X6/gncSwouD6ovwLUOwCUa0fV6xiz0y6iveWE90nwsieN
+          hUGFfB6+AbG3R7umOoLhYofNZQR9wcF/r7iYr2NiwNB1gviHyueRWWSnRn9QQ7Wl
+          E6YoJmVjDmwM9PvS3pV2EiNPqVWukWqdaR5F+9Iu0voX7bBXS1ceFi3u/EnTL7Wj
+          c9AY73ufHf6+aYti0rUOZMXcaguulg+Tcgcyw1YgfTXQyUK89YVLVoEw5pApWOUs
+          7Vv8PqZMl4DjdNNW58vh+QS2cxnepYufrOssNGPbTpSlncwVjv6oolpP4nEzCfED
+          81MnwuWqzy4l1k411wst3gk0+5me4kA3LsOFbXVFEMYydVJXj5D9xhtg2YEk/GoB
+          u6FwFdTCP1bYybB9SA2aYCSDkIZao8WJcZkt8LhlrJO+na1mbfjhiyuxVXjIjHie
+          6Cx877Ldamn7jDqsGVGnSo6QbSY1HSIMLcA7q6FTA2yxPSQ9H20JykGpHY2wlUQd
+          oHX64MK4TX8WvHw+lr3D/va9TUUSJWu7PZ0CAwEAAaNQME4wHQYDVR0OBBYEFNP/
+          Q0yvcUaqMOUV3/ICpaqDTyKwMB8GA1UdIwQYMBaAFNP/Q0yvcUaqMOUV3/ICpaqD
+          TyKwMAwGA1UdEwQFMAMBAf8wDQYJKoZIhvcNAQELBQADggIBAAVu5qnm1tcLjCkn
+          McIbgI8g1Pb6dk0VDt45gw+yw6NQDMnr1ElFCxm7JrXxqtpf5r3gadkCCCiANqMy
+          8sjiVvNQuWvPvQo4FLlA4o25SGxPJlXm97lQgrB+D9mCpq2qds7Vd9gqBfFkTMC1
+          yo/Sj1BqjHvjZZ76OR5MZiwPDY+4ypv1abxcUjycoxAlvGL8VpQwqu3e10BQ58vL
+          rnTu8/K4WoEyt6s7cU8LHE2k/md9RuL1QQs63X7y35kxYK4ZRmvAedJScLdkiJMG
+          THQ415LFz9dpK6/+6goKS2xqpuF4fpoCPsICxwOE3V+lKrqmW/ZN1R7LphBxkbz8
+          Q8Mz7+EU/1rogfmxVaa7UlrvvRrRZZ9v9ur/0w2zEHdJOatW3x89DTaSeSDJvVI4
+          dDYus0UW1+crANzja1g/G9ERNOMgj8D2y5tUEVEAotjSpDAY5kXbmnZnOQbdDvE8
+          RQ61gQ05o3xhMNN+eFJS1FUPWDXX+Un8HnezXIw0NK1DIrnZYx+YsIBqBvp4kwbt
+          OS8vLEVnvPt8HiPhNolq3tK0xDHQLZ9cQJcMrZqH/W/4srqg4HSZf0E/BuWLQNxd
+          0VEUba7wtBMkLdgGSHDy6lpW9VLU57ocmtM8kKEM/SUFqBh2eebFnAWas0puJtdT
+          RaDgJ6aXu+cQH7w0nfMjbZA7zyi9
+          -----END CERTIFICATE-----
+
+        jenkins_tls_key: |
+          -----BEGIN PRIVATE KEY-----
+          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
+          pJZg72Vavt8sVEOUORGxqSfeEaGJ
+          -----END PRIVATE KEY-----
