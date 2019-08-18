@@ -1,0 +1,18 @@
+---
+galaxy_info:
+  author: Data.gov
+  description: Production Jenkins instance for the Data.gov platform.
+  company: General Services Administration
+
+  issue_tracker_url: https://github.com/GSA/datagov-deploy-jenkins/issues
+  license: CC0-1.0
+  min_ansible_version: 2.4
+
+  platforms:
+    - name: Ubuntu
+      versions:
+        - bionic
+
+  galaxy_tags: []
+
+dependencies: []

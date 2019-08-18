@@ -1,0 +1,22 @@
+---
+# These are common plugins, users shouldn't need to edit
+jenkins_plugins:
+  - ansible
+  - ansicolor
+  - audit-trail
+  - aws-credentials
+  - blueocean
+  - docker
+  - github
+  - packer
+  - periodicbackup
+  - pipeline-utility-steps
+  - role-strategy
+  - saml
+  - ssh-agent
+  - timestamper
+  - workflow-aggregator
+  - ws-cleanup
+
+# Users can override this to install their own plugins
+jenkins_additional_plugins: []

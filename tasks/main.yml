@@ -1,0 +1,17 @@
+---
+- name: assert jenkins_admin_password is set
+  fail:
+    msg: jenkins_admin_password is required
+  when: jenkins_admin_password is not defined
+
+# Since our variables have the same name as the thirdparty role, we need to set
+# them explicitly to avoid an infinite lookup.
+- name: set jenkins defaults as facts
+  set_fact:
+    __jenkins_plugins: "{{ jenkins_plugins }}"
+
+- name: install jenkins
+  import_role:
+    name: geerlingguy.jenkins
+  vars:
+    jenkins_plugins: "{{ __jenkins_plugins + jenkins_additional_plugins }}"
