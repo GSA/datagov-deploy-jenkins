@@ -15,3 +15,4 @@
     name: geerlingguy.jenkins
   vars:
     jenkins_plugins: "{{ __jenkins_plugins + jenkins_additional_plugins }}"
+    jenkins_plugin_timeout: 120
