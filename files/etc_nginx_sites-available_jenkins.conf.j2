@@ -19,10 +19,6 @@ server {
   ssl_certificate /etc/ssl/certs/jenkins.crt;
   ssl_certificate_key /etc/ssl/private/jenkins.key;
 
-  location /login {
-    limit_req zone=jenkins;
-  }
-
   location / {
     proxy_set_header        Host $host:$server_port;
     proxy_set_header        X-Real-IP $remote_addr;
@@ -36,5 +32,9 @@ server {
     proxy_buffering off; # Required for HTTP-based CLI to work over SSL
     # workaround for https://issues.jenkins-ci.org/browse/JENKINS-45651
     add_header 'X-SSH-Endpoint' 'jenkins.domain.tld:50022' always;
+
+    location /login {
+      limit_req zone=jenkins;
+    }
   }
 }
