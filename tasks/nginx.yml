@@ -16,7 +16,7 @@
   copy: content={{ jenkins_tls_key }} dest=/etc/ssl/private/jenkins.key owner=root group=ssl-cert mode=0640
 
 - name: install nginx jenkins site
-  copy: src=etc_nginx_sites-available_jenkins.conf.j2 dest=/etc/nginx/sites-available/jenkins.conf mode=0644 owner=root group=root
+  template: src=etc_nginx_sites-available_jenkins.conf.j2 dest=/etc/nginx/sites-available/jenkins.conf mode=0644 owner=root group=root
   notify: reload nginx
 
 - name: enable jenkins site
