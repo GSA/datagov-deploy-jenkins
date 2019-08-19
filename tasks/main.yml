@@ -19,6 +19,8 @@
   vars:
     packages:
       - docker.io
+      - python3-dev
+      - python3-pip
 
 # Since our variables have the same name as the thirdparty role, we need to set
 # them explicitly to avoid an infinite lookup.
@@ -39,6 +41,13 @@
     groups: docker
     state: present
     append: yes
+
+- name: install pipenv
+  pip:
+    name: pipenv
+    executable: pip3
+    state: present
+    umask: "0022"
 
 - name: install nginx for ssl termination
   import_tasks: nginx.yml
