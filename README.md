@@ -7,22 +7,45 @@ This installs a production single-instance Jenkins with Nginx to terminate SSL.
 The following plugins are installed. You may install additional plugins by
 specifying them in the `jenkins_additional_plugins` variable.
 
-- ansible
-- ansicolor
-- audit-trail
-- aws-credentials
-- blueocean
-- docker
-- github
-- packer
-- periodicbackup
-- pipeline-utility-steps
-- role-strategy
-- saml
-- ssh-agent
-- timestamper
-- workflow-aggregator
-- ws-cleanup
+- [ansible](https://plugins.jenkins.io/ansible) allows to execute Ansible tasks
+  as a job build step
+- [ansicolor](https://plugins.jenkins.io/ansicolor) _(enable in pipeline)_ add
+  ANSI escape sequences, including color, to Console Output
+- [audit-trail](https://plugins.jenkins.io/audit-trail) _(requires
+  configuraiton)_ keeps a log of who performed particular Jenkins operations, such
+  as configuring jobs
+- [aws-credentials](https://plugins.jenkins.io/aws-credentials) allows storing
+  Amazon IAM credentials within the Jenkins Credentials API
+- [blueocean](https://plugins.jenkins.io/blueocean) is a new Jenkins UI
+  optimized for user experience; it reduces clutter and increases clarity for
+  every member of your team
+- [docker-workflow](https://plugins.jenkins.io/docker-workflow) allows to build
+  and use [Docker](https://www.docker.com) containers from pipelines
+- [github](https://plugins.jenkins.io/github) integrates Jenkins with
+  [GitHub](https://github.com) projects
+- [packer](https://plugins.jenkins.io/packer) allows [Packer](https://packer.io)
+  tasks to build and publish AMI and OS images
+- [periodicbackup](https://plugins.jenkins.io/periodicbackup) _(requires
+  configuration)_ allows archiving and restoring your Jenkins (and Hudson) home
+  directory
+- [pipeline-utility-steps](https://plugins.jenkins.io/pipeline-utility-steps)
+  adds small, miscellaneous, cross platform [utility
+  steps](https://github.com/jenkinsci/pipeline-utility-steps-plugin/blob/master/docs/STEPS.md)
+  for [Pipeline Plugin](https://plugins.jenkins.io/workflow-aggregator) jobs
+- [role-strategy](https://plugins.jenkins.io/role-strategy) adds a new
+  role-based strategy to manage users' permissions
+- [saml](https://plugins.jenkins.io/saml) _(requires configuration)_ allows
+  authentication to Jenkins via the SAML 2.0 protocol
+- [ssh-agent](https://plugins.jenkins.io/ssh-agent) allows you to provide SSH
+  credentials to builds via a ssh-agent in Jenkins
+- [timestamper](https://plugins.jenkins.io/timestamper) _(enable in pipeline)_
+  adds timestamps to the Console Output
+- [workflow-aggregator](https://plugins.jenkins.io/workflow-aggregator) a.k.a.
+  Pipeline, a suite of plugins that lets you orchestrate simple or complex
+  automation
+- [ws-cleanup](https://plugins.jenkins.io/ws-cleanup) _(requires
+  configuraiton)_ declared build wrapper and post build step to delete files
+  matching a pattern
 
 
 ## Usage

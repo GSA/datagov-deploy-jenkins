@@ -6,7 +6,7 @@ jenkins_plugins:
   - audit-trail
   - aws-credentials
   - blueocean
-  - docker
+  - docker-workflow
   - github
   - packer
   - periodicbackup
