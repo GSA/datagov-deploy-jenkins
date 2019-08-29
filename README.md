@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/GSA/datagov-deploy-jenkins.svg?style=svg)](https://circleci.com/gh/GSA/datagov-deploy-jenkins)
+
 # datagov-deploy-jenkins
 
 Ansible role to install Jenkins for the Data.gov platform.
@@ -98,6 +100,17 @@ File content for the TLS/SSL key to serve for your Jenkins instance.
 #### `jenkins_url` string
 
 The public URL where Jenkins will be available.
+
+
+## Configuring Jenkins
+
+While our goal is to configure Jenkins out of the box, there are currently some
+steps that need to be configured manually after you deploy your instance.
+
+### Email notifications
+
+
+### Setup a project with blue ocean
 
 
 ## Development
