@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/GSA/datagov-deploy-jenkins.svg?style=svg)](https://circleci.com/gh/GSA/datagov-deploy-jenkins)
+
 # datagov-deploy-jenkins
 
 Ansible role to install Jenkins for the Data.gov platform.
