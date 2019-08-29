@@ -100,6 +100,17 @@ File content for the TLS/SSL key to serve for your Jenkins instance.
 The public URL where Jenkins will be available.
 
 
+## Configuring Jenkins
+
+While our goal is to configure Jenkins out of the box, there are currently some
+steps that need to be configured manually after you deploy your instance.
+
+### Email notifications
+
+
+### Setup a project with blue ocean
+
+
 ## Development
 
 Requirements:
