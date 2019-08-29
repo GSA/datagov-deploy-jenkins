@@ -35,6 +35,8 @@ server {
 
     location /login {
       limit_req zone=jenkins;
+      limit_req_status 429;
+      proxy_pass              http://jenkins;
     }
   }
 }
