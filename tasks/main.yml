@@ -49,5 +49,15 @@
     state: present
     umask: "0022"
 
+- name: setup jenkins credentials for CLI tasks
+  copy:
+    dest: /root/jenkins.txt
+    mode: "0640"
+    content: |
+      admin:{{ jenkins_admin_password }}
+
+- name: cron to update plugins
+  copy: dest=/etc/cron.daily/datagov-jenkins src=etc_cron.daily_datagov-jenkins mode=0755 owner=root group=root
+
 - name: install nginx for ssl termination
   import_tasks: nginx.yml

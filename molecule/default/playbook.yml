@@ -4,7 +4,7 @@
   roles:
     - role: datagov-deploy-jenkins
       vars:
-        jenkins_admin_password: admin
+        jenkins_admin_password: adminpassword
         jenkins_tls_cert: |
           -----BEGIN CERTIFICATE-----
           MIIF4TCCA8mgAwIBAgIJAOr/xRjCyjDsMA0GCSqGSIb3DQEBCwUAMIGGMQswCQYD
