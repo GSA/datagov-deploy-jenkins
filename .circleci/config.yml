@@ -1,0 +1,29 @@
+---
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6
+    working_directory: ~/datagov-deploy-jenkins
+    environment:
+      PIPENV_VENV_IN_PROJECT: 1
+    steps:
+      - checkout
+      - setup_remote_docker
+      - restore_cache:
+          keys:
+            - v1-pipfile-{{ checksum "Pipfile.lock" }}
+            - v1-pipfile-
+      - run: pipenv sync --dev
+      - save_cache:
+          key: v1-pipfile-{{ checksum "Pipfile.lock" }}
+          paths:
+            - .venv
+      - run: pipenv run test
+
+
+workflows:
+  version: 2
+  commit:
+    jobs:
+      - build
