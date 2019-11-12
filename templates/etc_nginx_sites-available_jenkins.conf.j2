@@ -32,9 +32,5 @@ server {
     proxy_buffering off; # Required for HTTP-based CLI to work over SSL
     # workaround for https://issues.jenkins-ci.org/browse/JENKINS-45651
     add_header 'X-SSH-Endpoint' 'jenkins.domain.tld:50022' always;
-
-    location /login {
-      limit_req zone=jenkins;
-    }
   }
 }
