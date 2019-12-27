@@ -14,7 +14,7 @@ server {
 
 server {
   listen 443 ssl;
-  server_name {{ jenkins_url | default(ansible_fqdn) }};
+  server_name {{ jenkins_host | default(ansible_fqdn) }};
 
   ssl_certificate /etc/ssl/certs/jenkins.crt;
   ssl_certificate_key /etc/ssl/private/jenkins.key;
