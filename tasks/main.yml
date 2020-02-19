@@ -22,17 +22,11 @@
       - python3-dev
       - python3-pip
 
-# Since our variables have the same name as the thirdparty role, we need to set
-# them explicitly to avoid an infinite lookup.
-- name: set jenkins defaults as facts
-  set_fact:
-    __jenkins_plugins: "{{ jenkins_plugins }}"
-
 - name: install jenkins
   import_role:
     name: geerlingguy.jenkins
   vars:
-    jenkins_plugins: "{{ __jenkins_plugins + jenkins_additional_plugins }}"
+    jenkins_plugins: "{{ jenkins_default_plugins + jenkins_additional_plugins }}"
     jenkins_plugin_timeout: 120
 
 - name: add jenkins to the docker group
