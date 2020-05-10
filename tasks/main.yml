@@ -44,6 +44,15 @@
     state: present
     umask: "0022"
 
+- name: install configuration as code
+  copy:
+    content: "{{ jenkins_config }}"
+    dest: "{{ jenkins_home }}/jenkins.yaml"  # default configuration-as-code location
+    owner: jenkins
+    group: jenkins
+    mode: 0640
+  notify: restart jenkins
+
 - name: setup jenkins credentials for CLI tasks
   copy:
     dest: /root/jenkins.txt

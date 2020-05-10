@@ -1,4 +1,12 @@
 ---
+jenkins_config: |
+  # https://plugins.jenkins.io/configuration-as-code/
+  jenkins:
+    systemMessage: "Jenkins configured automatically by Jenkins Configuration as Code plugin\n\n"
+    authorizationStrategy:
+      loggedInUsersCanDoAnything:
+        allowAnonymousRead: false
+
 # These are common plugins, users shouldn't need to edit
 jenkins_default_plugins:
   - ansible
@@ -6,9 +14,11 @@ jenkins_default_plugins:
   - audit-trail
   - aws-credentials
   - blueocean
+  - configuration-as-code
   - docker-workflow
   - github
   - github-issues
+  - job-dsl
   - packer
   - periodicbackup
   - pipeline-utility-steps
