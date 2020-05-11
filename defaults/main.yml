@@ -8,6 +8,7 @@ jenkins_default_plugins:
   - blueocean
   - docker-workflow
   - github
+  - github-issues
   - packer
   - periodicbackup
   - pipeline-utility-steps
