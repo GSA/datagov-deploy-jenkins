@@ -32,6 +32,8 @@ specifying them in the `jenkins_additional_plugins` variable.
   and use [Docker](https://www.docker.com) containers from pipelines
 - [github](https://plugins.jenkins.io/github) integrates Jenkins with
   [GitHub](https://github.com) projects
+- [github-issues](https://plugins.jenkins.io/github-issues) create GitHub issues
+  on build failures
 - [packer](https://plugins.jenkins.io/packer) allows [Packer](https://packer.io)
   tasks to build and publish AMI and OS images
 - [periodicbackup](https://plugins.jenkins.io/periodicbackup) _(requires
