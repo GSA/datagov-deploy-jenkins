@@ -4,7 +4,14 @@
 
 Ansible role to install Jenkins for the Data.gov platform.
 
-This installs a production single-instance Jenkins with Nginx to terminate SSL.
+## Features
+
+- Production single-instance [Jenkins](https://jenkins.io)
+- SSL termination with [Nginx](https://nginx.org)
+- Automatic updates for plugins
+
+
+### Plugins
 
 The following plugins are installed. You may install additional plugins by
 specifying them in the `jenkins_additional_plugins` variable.
@@ -104,13 +111,32 @@ The public URL where Jenkins will be available.
 
 ## Configuring Jenkins
 
-While our goal is to configure Jenkins out of the box, there are currently some
-steps that need to be configured manually after you deploy your instance.
+While our goal is to configure production-ready Jenkins out of the box, there
+are some steps that need to be configured manually after you deploy your
+instance.
+
+
+### Keeping Jenkins up to date
+
+Jenkins is pulled from the Jenkins repos for your distro (currently we only
+support Ubuntu). As long as your OS is configured to update automatically,
+you'll always pull in the latest version of Jenkins. For Debian/Ubuntu, install
+[unattended-upgrades](https://wiki.debian.org/UnattendedUpgrades).
+
+
+### SAML2 authentication
+
+_TODO_
+
 
 ### Email notifications
 
+_TODO_
+
 
 ### Setup a project with blue ocean
+
+_TODO_
 
 
 ## Development

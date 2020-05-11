@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+# https://stackoverflow.com/a/25647793
+# Using the CLI, fetch the list of plugins. Any plugins needing an update will
+# list the most recent version at the end of the line e.g.
+#
+#   script-security                    Script Security Plugin                                           1.62 (1.63)
+#
+# Run install-plugin on this list to get the latest verion. Finally, restart jenkins.
+function jenkins-cli () {
+  java -jar /opt/jenkins-cli.jar -s http://127.0.0.1:8080/ -auth @/root/jenkins.txt "$@"
+}
+
+UPDATE_LIST=$(jenkins-cli list-plugins | grep -e ')$' | awk '{ print $1 }');
+if [ -z "${UPDATE_LIST}" ]; then
+  exit 0
+fi
+
+echo "Updating Jenkins plugins: ${UPDATE_LIST}";
+jenkins-cli install-plugin ${UPDATE_LIST}
+jenkins-cli safe-restart
