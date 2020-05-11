@@ -1,6 +1,6 @@
 ---
 # These are common plugins, users shouldn't need to edit
-jenkins_plugins:
+jenkins_default_plugins:
   - ansible
   - ansicolor
   - audit-trail
