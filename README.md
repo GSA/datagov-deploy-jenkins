@@ -25,6 +25,9 @@ specifying them in the `jenkins_additional_plugins` variable.
   as configuring jobs
 - [aws-credentials](https://plugins.jenkins.io/aws-credentials) allows storing
   Amazon IAM credentials within the Jenkins Credentials API
+- [configuration-as-code](https://plugins.jenkins.io/configuration-as-code/)
+  an opinionated way to configure Jenkins based on human-readable declarative
+  configuration files
 - [blueocean](https://plugins.jenkins.io/blueocean) is a new Jenkins UI
   optimized for user experience; it reduces clutter and increases clarity for
   every member of your team
@@ -34,6 +37,8 @@ specifying them in the `jenkins_additional_plugins` variable.
   [GitHub](https://github.com) projects
 - [github-issues](https://plugins.jenkins.io/github-issues) create GitHub issues
   on build failures
+- [job-dsl](https://plugins.jenkins.io/job-dsl/) define jobs in a programmatic form
+  in a human readable file
 - [packer](https://plugins.jenkins.io/packer) allows [Packer](https://packer.io)
   tasks to build and publish AMI and OS images
 - [periodicbackup](https://plugins.jenkins.io/periodicbackup) _(requires
