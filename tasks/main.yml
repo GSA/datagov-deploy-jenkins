@@ -61,7 +61,10 @@
       admin:{{ jenkins_admin_password }}
 
 - name: cron to update plugins
-  copy: dest=/etc/cron.daily/datagov-jenkins src=etc_cron.daily_datagov-jenkins mode=0755 owner=root group=root
+  copy: dest=/etc/cron.daily/{{ item }} src=etc_cron.daily_{{ item }} mode=0755 owner=root group=root
+  with_items:
+    - datagov-jenkins
+    - datagov-docker
 
 - name: install nginx for ssl termination
   import_tasks: nginx.yml

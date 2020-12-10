@@ -22,6 +22,12 @@ def test_cron(host):
     assert datagov_jenkins.group == 'root'
     assert datagov_jenkins.mode == 0o755
 
+    datagov_docker = host.file('/etc/cron.daily/datagov-docker')
+
+    assert datagov_docker.user == 'root'
+    assert datagov_docker.group == 'root'
+    assert datagov_docker.mode == 0o755
+
 
 def test_jenkins_credentials(host):
     credentials = host.file('/root/jenkins.txt')
