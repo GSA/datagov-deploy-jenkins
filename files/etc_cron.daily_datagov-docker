@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -o errexit
+set -o pipefail
+set -o nounset
+
+# Clean up unnecessary docker files/images/builds
+
+docker image prune
