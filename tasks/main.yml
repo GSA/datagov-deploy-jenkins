@@ -30,6 +30,15 @@
     jenkins_plugins: "{{ jenkins_default_plugins + jenkins_additional_plugins }}"
     jenkins_plugin_timeout: 120
 
+- name: install saml keystore
+  copy:
+    src: "{{ jenkins_saml_keystore_path }}"
+    dest: "{{ jenkins_home }}/saml-key.jks"
+    owner: jenkins
+    group: jenkins
+    mode: "0640"
+  when: jenkins_saml_keystore_path is defined
+
 - name: add jenkins to the docker group
   user:
     name: jenkins
