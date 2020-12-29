@@ -38,6 +38,8 @@
     group: jenkins
     mode: "0640"
   when: jenkins_saml_keystore_path is defined
+  notify:
+    - restart jenkins
 
 - name: add jenkins to the docker group
   user:
@@ -45,6 +47,8 @@
     groups: docker
     state: present
     append: yes
+  notify:
+    - restart jenkins
 
 - name: install pipenv
   pip:
@@ -60,7 +64,8 @@
     owner: jenkins
     group: jenkins
     mode: 0640
-  notify: restart jenkins
+  notify:
+    - restart jenkins
 
 - name: setup jenkins credentials for CLI tasks
   copy:
