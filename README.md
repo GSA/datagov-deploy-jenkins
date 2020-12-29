@@ -101,6 +101,12 @@ The admin password to assign.
 Additional Jenkins plugins to install.
 
 
+#### `jenkins_saml_keystore_path` string
+
+Path to the Java Key Store file containing the SAML2 key and certificate for the
+SAML plugin.
+
+
 #### `jenkins_tls_cert` string required
 
 File content for the TLS/SSL certificate to serve for your Jenkins instance.

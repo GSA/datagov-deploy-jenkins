@@ -30,12 +30,25 @@
     jenkins_plugins: "{{ jenkins_default_plugins + jenkins_additional_plugins }}"
     jenkins_plugin_timeout: 120
 
+- name: install saml keystore
+  copy:
+    src: "{{ jenkins_saml_keystore_path }}"
+    dest: "{{ jenkins_home }}/saml-key.jks"
+    owner: jenkins
+    group: jenkins
+    mode: "0640"
+  when: jenkins_saml_keystore_path is defined
+  notify:
+    - restart jenkins
+
 - name: add jenkins to the docker group
   user:
     name: jenkins
     groups: docker
     state: present
     append: yes
+  notify:
+    - restart jenkins
 
 - name: install pipenv
   pip:
@@ -51,7 +64,8 @@
     owner: jenkins
     group: jenkins
     mode: 0640
-  notify: restart jenkins
+  notify:
+    - restart jenkins
 
 - name: setup jenkins credentials for CLI tasks
   copy:
