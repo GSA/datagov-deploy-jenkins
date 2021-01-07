@@ -67,6 +67,16 @@
   notify:
     - restart jenkins
 
+- name: setup docker configuration
+  template:
+    src: etc_docker_daemon.json
+    dest: /etc/docker/daemon.json
+    mode: 0644
+    owner: root
+    group: root
+  notify:
+    - restart docker
+
 - name: setup jenkins credentials for CLI tasks
   copy:
     dest: /root/jenkins.txt
