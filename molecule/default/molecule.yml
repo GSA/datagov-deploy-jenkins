@@ -13,6 +13,7 @@ platforms:
       - 8080/tcp
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /var/run/docker.sock:/var/run/docker.sock
     capabilities:
       - SYS_ADMIN
 provisioner:
