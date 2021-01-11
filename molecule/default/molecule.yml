@@ -14,6 +14,10 @@ provisioner:
   name: ansible
   lint:
     name: ansible-lint
+  inventory:
+    group_vars:
+      all:
+        molecule_test: true
 verifier:
   name: testinfra
   lint:
