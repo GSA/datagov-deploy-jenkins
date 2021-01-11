@@ -72,8 +72,8 @@
     src: etc_docker_daemon.json
     dest: /etc/docker/daemon.json
     mode: 0644
-    owner: root
-    group: root
+    owner: jenkins
+    group: jenkins
   notify:
     - restart docker
 
