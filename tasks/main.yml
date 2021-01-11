@@ -71,7 +71,7 @@
   template:
     src: etc_docker_daemon.json
     dest: /etc/docker/daemon.json
-    mode: 0644
+    mode: 0640
     owner: jenkins
     group: jenkins
   notify:
