@@ -43,4 +43,4 @@ def test_docker_config(host):
     assert docker_config.user == 'jenkins'
     assert docker_config.group == 'jenkins'
     assert docker_config.mode == 0o640
-    assert docker_config.contains('graph')
+    assert docker_config.contains('data-root')
