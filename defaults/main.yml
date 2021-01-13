@@ -1,4 +1,6 @@
 ---
+docker_data_folder: /data/docker
+
 jenkins_config: |
   # https://plugins.jenkins.io/configuration-as-code/
   jenkins:
