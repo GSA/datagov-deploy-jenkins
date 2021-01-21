@@ -181,9 +181,9 @@ to grant it permissions.
 
 ```groovy
 // fill these out script parameters
-def userName = 'ci'
+def userName = 'admin'
 def userPassword = // pwgen -s 64 1
-def tokenName = 'circleci'
+def tokenName = 'ansible'
 
 import hudson.model.*
 import hudson.security.*
@@ -205,6 +205,18 @@ def result = apiTokenProperty.tokenStore.generateNewToken(tokenName)
 user.save()
 
 return result.plainValue
+```
+
+Specify the service account and its API token for Ansible access.
+
+```yaml
+---
+- name: Playbook
+  hosts: all
+  roles:
+    - role: gsa.datagov-deploy-jenkins
+      jenkins_admin_user: admin
+      jenkins_admin_password: "{{ vault_jenkins_admin_api_token }}"
 ```
 
 
