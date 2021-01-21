@@ -165,6 +165,49 @@ change, or the keystore cert/key changes, it's probably easier to regenerate
 them all and then extract these values from Jenkins.
 
 
+## Service accounts
+
+You might need service accounts that are not tied directly to users. This is useful
+for programitic access with Ansible or API access.
+
+With SAML authentication enabled, you can no longer create user/service accounts
+through the UI. Instead, use the [script
+console](https://ci.sandbox.datagov.us/script) to run the Groovy script below. Set
+a random password. The return value is the API token. Save this for later as you won't have
+another chance.
+
+Then with configuration as code, you can assign your service account to a role in order
+to grant it permissions.
+
+```groovy
+// fill these out script parameters
+def userName = 'ci'
+def userPassword = // pwgen -s 64 1
+def tokenName = 'circleci'
+
+import hudson.model.*
+import hudson.security.*
+import jenkins.model.*
+import jenkins.security.*
+import jenkins.security.apitoken.*
+
+// create the user
+def instance = Jenkins.getInstance()
+def hudsonRealm = new HudsonPrivateSecurityRealm(false)
+hudsonRealm.createAccount(userName, userPassword)
+instance.setSecurityRealm(hudsonRealm)
+instance.save()
+
+// create an API token for the user
+def user = User.get(userName, false)
+def apiTokenProperty = user.getProperty(ApiTokenProperty.class)
+def result = apiTokenProperty.tokenStore.generateNewToken(tokenName)
+user.save()
+
+return result.plainValue
+```
+
+
 ## Getting locked out
 
 Once SAML2 is enabled your built-in admin user will no longer work and you might
