@@ -34,12 +34,6 @@ server {
 
     # Avoid duplicate HSTS. Netscaler/Palo Alto adds it for external traffic
     if ( $host = $hostname ) {
-      set $internal_traffic 1;
-    }
-    if ( $host = {{ ansible_default_ipv4.address }} ) {
-      set $internal_traffic 1;
-    }
-    if ( $internal_traffic = 1 ) {
       add_header Strict-Transport-Security "max-age=31536000; includeSubdomains; ";
     }
   }
