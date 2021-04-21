@@ -34,7 +34,7 @@ server {
 
     # Avoid duplicate HSTS. Netscaler/Palo Alto adds it for external traffic
     if ( $host = $hostname ) {
-      add_header Strict-Transport-Security "max-age=31536000; includeSubdomains; ";
+      add_header Strict-Transport-Security "max-age=31536000; includeSubdomains; " always;
     }
   }
 }
