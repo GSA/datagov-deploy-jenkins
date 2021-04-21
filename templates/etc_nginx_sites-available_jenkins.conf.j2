@@ -31,5 +31,10 @@ server {
     proxy_buffering off; # Required for HTTP-based CLI to work over SSL
     # workaround for https://issues.jenkins-ci.org/browse/JENKINS-45651
     add_header 'X-SSH-Endpoint' 'jenkins.domain.tld:50022' always;
+
+    # Avoid duplicate HSTS. Netscaler/Palo Alto adds it for external traffic
+    if ( $host = $hostname ) {
+      add_header Strict-Transport-Security "max-age=31536000; includeSubdomains; ";
+    }
   }
 }
