@@ -31,8 +31,6 @@ specifying them in the `jenkins_additional_plugins` variable.
 - [blueocean](https://plugins.jenkins.io/blueocean) is a new Jenkins UI
   optimized for user experience; it reduces clutter and increases clarity for
   every member of your team
-- [docker-workflow](https://plugins.jenkins.io/docker-workflow) allows to build
-  and use [Docker](https://www.docker.com) containers from pipelines
 - [github](https://plugins.jenkins.io/github) integrates Jenkins with
   [GitHub](https://github.com) projects
 - [github-issues](https://plugins.jenkins.io/github-issues) create GitHub issues

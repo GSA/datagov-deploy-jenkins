@@ -23,10 +23,7 @@ def test_cron(host):
     assert datagov_jenkins.mode == 0o755
 
     datagov_docker = host.file('/etc/cron.daily/datagov-docker')
-
-    assert datagov_docker.user == 'root'
-    assert datagov_docker.group == 'root'
-    assert datagov_docker.mode == 0o755
+    assert not datagov_docker.exists
 
 
 def test_jenkins_credentials(host):
@@ -40,7 +37,9 @@ def test_jenkins_credentials(host):
 
 def test_docker_config(host):
     docker_config = host.file('/etc/docker/daemon.json')
-    assert docker_config.user == 'jenkins'
-    assert docker_config.group == 'jenkins'
-    assert docker_config.mode == 0o640
-    assert docker_config.contains('data-root')
+    assert not docker_config.exists
+
+
+def test_docker(host):
+    docker = host.package('docker.io')
+    assert not docker.is_installed
