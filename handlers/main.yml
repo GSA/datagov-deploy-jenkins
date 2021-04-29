@@ -4,7 +4,3 @@
 
 - name: reload nginx
   service: name=nginx state=reloaded
-
-- name: restart docker
-  service: name=docker state=restarted
-  when: molecule_test is not defined

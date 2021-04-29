@@ -1,6 +1,4 @@
 ---
-docker_data_folder: /data/docker
-
 jenkins_config: |
   # https://plugins.jenkins.io/configuration-as-code/
   jenkins:
@@ -17,7 +15,6 @@ jenkins_default_plugins:
   - aws-credentials
   - blueocean
   - configuration-as-code
-  - docker-workflow
   - github
   - github-issues
   - job-dsl

@@ -18,10 +18,13 @@
   apt: name={{ packages }} state=present
   vars:
     packages:
-      - docker.io
       - openjdk-8-jdk
       - python3-dev
       - python3-pip
+
+# TODO remove this after next version bump
+- name: uninstall docker
+  apt: name=docker.io state=absent
 
 - name: install jenkins
   import_role:
@@ -38,15 +41,6 @@
     group: jenkins
     mode: "0640"
   when: jenkins_saml_keystore_path is defined
-  notify:
-    - restart jenkins
-
-- name: add jenkins to the docker group
-  user:
-    name: jenkins
-    groups: docker
-    state: present
-    append: yes
   notify:
     - restart jenkins
 
@@ -67,15 +61,11 @@
   notify:
     - restart jenkins
 
+# TODO remove this after next version bump
 - name: setup docker configuration
-  template:
-    src: etc_docker_daemon.json
-    dest: /etc/docker/daemon.json
-    mode: 0640
-    owner: jenkins
-    group: jenkins
-  notify:
-    - restart docker
+  file:
+    path: /etc/docker/daemon.json
+    state: absent
 
 - name: setup jenkins credentials for CLI tasks
   copy:
@@ -88,7 +78,10 @@
   copy: dest=/etc/cron.daily/{{ item }} src=etc_cron.daily_{{ item }} mode=0755 owner=root group=root
   with_items:
     - datagov-jenkins
-    - datagov-docker
+
+# TODO remove this after next version bump
+- name: remove docker cron
+  file: path=/etc/cron.daily/datagov-docker state=absent
 
 - name: install nginx for ssl termination
   import_tasks: nginx.yml
