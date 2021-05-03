@@ -12,14 +12,14 @@ jobs:
       - setup_remote_docker
       - restore_cache:
           keys:
-            - v1-pipfile-{{ checksum "Pipfile.lock" }}
-            - v1-pipfile-
+            - v2-pipfile-{{ checksum "Pipfile.lock" }}
+            - v2-pipfile-
       - run: pipenv sync --dev
+      - run: pipenv run test
       - save_cache:
-          key: v1-pipfile-{{ checksum "Pipfile.lock" }}
+          key: v2-pipfile-{{ checksum "Pipfile.lock" }}
           paths:
             - .venv
-      - run: pipenv run test
 
 
 workflows:
