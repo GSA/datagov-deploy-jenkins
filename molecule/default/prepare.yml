@@ -14,3 +14,6 @@
       vars:
         packages:
           - nginx
+
+    - name: remove default site
+      file: path=/etc/nginx/sites-enabled state=absent
