@@ -1,0 +1,19 @@
+---
+- name: Prepare
+  hosts: all
+  # nginxinc.nginx seems to have a bug at start/reload nginx
+  # use OS nginx package instead
+  # roles:
+  #   - role: nginxinc.nginx
+  #     vars:
+  #       nginx_branch: stable
+  #       nginx_state: latest
+  tasks:
+    - name: Install OS dependencies
+      apt: name={{ packages }} state=present update_cache=yes cache_valid_time={{ 24 * 60 * 60 }}
+      vars:
+        packages:
+          - nginx
+
+    - name: remove default site
+      file: path=/etc/nginx/sites-enabled state=absent

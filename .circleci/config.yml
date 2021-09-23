@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/python:3.6
+      - image: cimg/base:stable-18.04
     working_directory: ~/datagov-deploy-jenkins
     environment:
       PIPENV_VENV_IN_PROJECT: 1
@@ -14,7 +14,13 @@ jobs:
           keys:
             - v1-pipfile-{{ checksum "Pipfile.lock" }}
             - v1-pipfile-
-      - run: pipenv sync --dev
+      - run:
+          command: | # steps needed to use pipenv
+            sudo apt update
+            sudo apt install python3-pip
+            sudo ln -s /usr/bin/python3 /usr/local/bin/python3.6m
+            sudo pip3 install pipenv
+            pipenv sync --dev
       - save_cache:
           key: v1-pipfile-{{ checksum "Pipfile.lock" }}
           paths:

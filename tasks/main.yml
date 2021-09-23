@@ -83,5 +83,18 @@
 - name: remove docker cron
   file: path=/etc/cron.daily/datagov-docker state=absent
 
-- name: install nginx for ssl termination
-  import_tasks: nginx.yml
+- name: install ssl-cert packages
+  apt: name={{ packages }} state=present
+  vars:
+    packages:
+      - ssl-cert
+
+- name: install tls certificate
+  copy: content={{ jenkins_tls_cert }} dest=/etc/ssl/certs/jenkins.crt owner=root group=root mode=0644
+
+- name: install tls key
+  copy: content={{ jenkins_tls_key }} dest=/etc/ssl/private/jenkins.key owner=root group=ssl-cert mode=0640
+
+- name: install jenkins site
+  template: src=etc_nginx_sites-available_jenkins.conf.j2 dest=/etc/nginx/conf.d/default.conf mode=0644 owner=root group=root
+  notify: reload nginx
