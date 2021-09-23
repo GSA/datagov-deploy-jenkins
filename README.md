@@ -64,7 +64,21 @@ specifying them in the `jenkins_additional_plugins` variable.
 
 ## Usage
 
-Install [geerlingugy.jenkins](https://github.com/geerlingguy/ansible-role-jenkins).
+This role assumes you've already installed nginx. Add this role and its
+dependencies to your requirements.yml file.
+
+```yaml
+---
+- src: https://github.com/GSA/datagov-deploy-jenkins
+  version: v1.0.0
+  name: gsa.datagov-deploy-jenkins
+- src: geerlingguy.jenkins
+- src: nginxinc.nginx
+```
+
+Install with ansible-galaxy.
+
+    $ ansible-galaxy install -r requirements.yml
 
 Example playbook.
 
@@ -73,6 +87,7 @@ Example playbook.
 - name: Install
   hosts: all
   roles:
+    - nginxinc.nginx
     - gsa.datagov-deploy-jenkins
 ```
 
