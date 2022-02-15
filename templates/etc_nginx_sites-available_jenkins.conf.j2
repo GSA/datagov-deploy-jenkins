@@ -17,6 +17,7 @@ server {
 
   ssl_certificate /etc/ssl/certs/jenkins.crt;
   ssl_certificate_key /etc/ssl/private/jenkins.key;
+  ssl_protocols TLSv1.2 TLSv1.3;
 
   location / {
     proxy_set_header        Host $host:$server_port;
