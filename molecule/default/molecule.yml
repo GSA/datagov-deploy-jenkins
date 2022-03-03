@@ -18,6 +18,22 @@ provisioner:
     group_vars:
       all:
         molecule_test: true
+scenario:
+  name: default
+  test_sequence:
+    - lint
+    - dependency
+    - cleanup
+    - destroy
+    - syntax
+    - create
+    - prepare
+    - converge
+    # - idempotence
+    - side_effect
+    - verify
+    - cleanup
+    - destroy
 verifier:
   name: testinfra
   lint:
